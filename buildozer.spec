@@ -1,7 +1,7 @@
 [app]
 
 # (str) Title of your application
-title = My Application
+title = Ghost Runner
 
 # (str) Package name
 package.name = myapp
@@ -13,7 +13,7 @@ package.domain = org.test
 source.dir = .
 
 # (list) Source files to include (let empty to include all the files)
-source.include_exts = py,png,jpg,kv,atlas
+source.include_exts = py,png,jpg,kv,atlas, ttf, mp3
 
 # (list) List of inclusions using pattern matching
 #source.include_patterns = assets/*,images/*.png
@@ -37,7 +37,7 @@ version = 0.1
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,kivy
+requirements = python3,pygame,jnius,sdl2,sdl2_image,sdl2_mixer,sdl2_ttf,png,jpeg
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
@@ -51,7 +51,7 @@ requirements = python3,kivy
 
 # (list) Supported orientations
 # Valid options are: landscape, portrait, portrait-reverse or landscape-reverse
-orientation = portrait
+orientation = landscape
 
 # (list) List of service to declare
 #services = NAME:ENTRYPOINT_TO_PY,NAME2:ENTRYPOINT2_TO_PY
@@ -74,7 +74,7 @@ osx.kivy_version = 1.9.1
 #
 
 # (bool) Indicate if the application should be fullscreen or not
-fullscreen = 0
+fullscreen = 1
 
 # (string) Presplash background color (for android toolchain)
 # Supported formats are: #RRGGBB #AARRGGBB or one of the following names:

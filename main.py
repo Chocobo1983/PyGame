@@ -1,5 +1,7 @@
 import pygame
 
+image_path = '/data/data/org.test.myapp/files/app/'
+
 clock = pygame.time.Clock()
 
 pygame.init() #обязательный метод в начале
@@ -9,28 +11,28 @@ screen = pygame.display.set_mode((800,400)) #установка размера �
 pygame.display.set_caption("Tutorial") #установка тайтла окна
 
 #установка иконки
-icon = pygame.image.load('resources/package_toys.png').convert_alpha()
+icon = pygame.image.load(image_path+'resources/package_toys.png').convert_alpha()
 pygame.display.set_icon(icon)
 
 running = True
 
-bg = pygame.image.load('resources/bg.jpg').convert()
+bg = pygame.image.load(image_path+'resources/bg.jpg').convert()
 
 walk_right = [
-    pygame.image.load('resources/player/right/right1.png').convert_alpha(),
-    pygame.image.load('resources/player/right/right2.png').convert_alpha(),
-    pygame.image.load('resources/player/right/right3.png').convert_alpha(),
-    pygame.image.load('resources/player/right/right4.png').convert_alpha()
+    pygame.image.load(image_path+'resources/player/right/right1.png').convert_alpha(),
+    pygame.image.load(image_path+'resources/player/right/right2.png').convert_alpha(),
+    pygame.image.load(image_path+'resources/player/right/right3.png').convert_alpha(),
+    pygame.image.load(image_path+'resources/player/right/right4.png').convert_alpha()
 ]
 
 walk_left = [
-    pygame.image.load('resources/player/left/left1.png').convert_alpha(),
-    pygame.image.load('resources/player/left/left2.png').convert_alpha(),
-    pygame.image.load('resources/player/left/left3.png').convert_alpha(),
-    pygame.image.load('resources/player/left/left4.png').convert_alpha()
+    pygame.image.load(image_path+'resources/player/left/left1.png').convert_alpha(),
+    pygame.image.load(image_path+'resources/player/left/left2.png').convert_alpha(),
+    pygame.image.load(image_path+'resources/player/left/left3.png').convert_alpha(),
+    pygame.image.load(image_path+'resources/player/left/left4.png').convert_alpha()
 ]
 
-ghost = pygame.image.load('resources/ghost_left.png').convert_alpha()
+ghost = pygame.image.load(image_path+'resources/ghost_left.png').convert_alpha()
 
 #ghost_x = 620
 ghost_list_in_game = []
@@ -46,13 +48,13 @@ player_y = 310
 is_Jump = False
 jump_count = 8
 
-bg_sound = pygame.mixer.Sound('resources/sounds/bg.mp3')
+bg_sound = pygame.mixer.Sound(image_path+'resources/sounds/bg.mp3')
 #bg_sound.play()
 
 ghost_timer = pygame.USEREVENT + 1
 pygame.time.set_timer(ghost_timer, 2500)
 
-label = pygame.font.Font('resources/Roboto/Roboto-Black.ttf', 48)
+label = pygame.font.Font(image_path+'resources/Roboto/Roboto-Black.ttf', 48)
 
 lose_label = label.render('You lose!',False, (255,0,0))
 restart_label = label.render('Play again',False, (115,132,148))
@@ -64,7 +66,7 @@ score = 0
 gameplay = True
 
 bullets_left = 5
-bullet = pygame.image.load('resources/bullet.png').convert_alpha()
+bullet = pygame.image.load(image_path+'resources/bullet.png').convert_alpha()
 bullets = []
 
 while running:
