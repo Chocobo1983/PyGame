@@ -63,6 +63,10 @@ score = 0
 
 gameplay = True
 
+bullets_left = 5
+bullet = pygame.image.load('resources/bullet.png').convert_alpha()
+bullets = []
+
 while running:
 
     screen.blit(bg, (bg_x,0))
@@ -117,6 +121,23 @@ while running:
         bg_x -=2
         if bg_x == -800:
             bg_x = 0
+        
+        # if keys[pygame.K_f]:
+        #     bullets.append(bullet.get_rect(topleft=(player_x+30, player_y + 10)))
+        if bullets:
+            for (i, el) in enumerate(bullets):
+                screen.blit(bullet, (el.x, el.y))
+                el.x += 4
+
+                if el.x > 800:
+                    bullets.pop(i)
+
+                if ghost_list_in_game:
+                    for index, ghost_el in enumerate(ghost_list_in_game):
+                        if el.colliderect(ghost_el):
+                            ghost_list_in_game.pop(index)
+                            bullets.pop(i)
+
     else:
         screen.fill((87,88,89))
         screen.blit(lose_label, (280,150))
@@ -127,7 +148,9 @@ while running:
             gameplay = True
             player_x = 300
             ghost_list_in_game.clear()
+            bullets.clear()
             score = 0
+            bullets_left = 5            
     
     score_label = label.render(f'Score: {score}', True, (255, 255, 0))  
     screen.blit(score_label, (10, 10))
@@ -143,5 +166,8 @@ while running:
             pygame.quit()
         if event.type == ghost_timer:
             ghost_list_in_game.append(ghost.get_rect(topleft=(620, 310)))
+        if gameplay and event.type == pygame.KEYUP and event.key == pygame.K_f and bullets_left>0:
+            bullets.append(bullet.get_rect(topleft=(player_x+30, player_y + 10)))
+            bullets_left -=1
 
     clock.tick(20)
